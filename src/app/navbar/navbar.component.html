@@ -1,0 +1,15 @@
+
+
+
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+            <button mat-button routerLink="/quiz">myQuiz</button>
+            <button mat-button routerLink="/play">play</button>
+
+            <span style="flex: 1 1 auto;"></span>
+            <button mat-button *ngIf="!tok" routerLink="/login">login</button>
+            <button mat-button *ngIf="tok" (click)="api.logout()" routerLink="/logout">logOut</button>
+            <button mat-button *ngIf="!tok" routerLink="/register">Register</button>
+    </mat-toolbar-row>
+ </mat-toolbar>

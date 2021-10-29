@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-title>list of Quiz</mat-card-title>
+  
+  <mat-list *ngFor="let item of this.quiz">
+      <mat-list-item class="clicklink" [routerLink]="['/playquiz',item.id]" > {{ item.title}} </mat-list-item>
+    </mat-list>
+  </mat-card>
+
+  
+  <!-- <mat-card>
+      روش دوم
+  <span>test sending id</span>
+  <mat-list *ngFor="let item ofbuild
+   this.quiz">
+    <mat-list-item class="clicklink" (click)="getidquis(item.id)" > {{ item.title}} </mat-list-item>
+  </mat-list>
+</mat-card> -->
+ 

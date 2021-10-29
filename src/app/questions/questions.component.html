@@ -1,0 +1,9 @@
+
+
+<mat-card>
+  <mat-card-title>list of Questions</mat-card-title>
+
+<mat-list *ngFor="let item of ques">
+    <mat-list-item class="clicklink" (click)="selectedQuia(item)"> {{ item.question }} </mat-list-item>
+  </mat-list>
+</mat-card>

@@ -1,0 +1,41 @@
+<!-- <mat-card>
+    <mat-card-title>list of Questions</mat-card-title>
+  
+  <mat-list *ngFor="let item of this.lstquestion">
+      <mat-list-item class="clicklink" > {{ item.question }} </mat-list-item>
+    </mat-list>
+  </mat-card>
+   -->
+   <mat-card  style="margin-top: 15px">
+
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel  *ngFor="let item of this.lstquestion ;let i = index"
+     [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+                {{item.question}}
+        </mat-panel-title>
+        <mat-panel-description>
+           select correct answer
+         <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header >
+        <mat-radio-group
+            aria-labelledby="example-radio-group-label" class="example-radio-group"
+            [(ngModel)]="item.selectedanswer" >
+            <mat-radio-button class="example-radio-button"
+                    *ngFor="let answers of  this.answers" [value]="answers">
+                my answer is {{answers}}
+            </mat-radio-button>
+        </mat-radio-group>
+      <mat-action-row>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>  
+   
+  </mat-accordion>
+
+  <mat-card-actions>
+    <button   mat-button color="primary" (click)="this.calculate()">finish</button>
+   </mat-card-actions>
+ </mat-card>

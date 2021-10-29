@@ -1,16 +1,42 @@
 <mat-card>
+  
+    <mat-card-title *ngIf="this.modelQuestion.id">Edit Question</mat-card-title>
 
-    <form >
-        <mat-form-field >
-     
-          <input matInput placeholder="Quztion" [(ngModel)]="quztion" name="quztion">
-        </mat-form-field>
+    <mat-card-title *ngIf="!this.modelQuestion.id">New Question</mat-card-title> 
+    <form  >
       
-        
+        <mat-form-field >
+          <input matInput placeholder="question" [(ngModel)]="this.modelQuestion.question" name="question">
+        </mat-form-field>
+    <br>
+        <mat-form-field >
+           <input matInput placeholder="CorrectAnswer" [(ngModel)]="this.modelQuestion.correctAnswer" name="CorrectAnswer">
+        </mat-form-field>
+        <br>
+        <mat-form-field >
+           <input matInput placeholder="Answer1" [(ngModel)]="this.modelQuestion.answer1" name="answer1">
+        </mat-form-field>
+        <br>
+        <mat-form-field >
+          <input matInput placeholder="Answer2" [(ngModel)]="this.modelQuestion.answer2" name="answer2">
+        </mat-form-field>
+        <br>
+        <mat-form-field >
+          <input matInput placeholder="Answer3" [(ngModel)]="this.modelQuestion.answer3" name="answer3">
+        </mat-form-field>
+       
+      
       </form>
       <mat-card-actions>
-        <button mat-button (click)="post(quztion)">Post</button>
-        
-      </mat-card-actions>
+        <button mat-button *ngIf="!this.modelQuestion.id && this.urlid "  (click)="post()">Post</button>
+      <span  *ngIf="!this.urlid " >For Active post first select one Quiz</span>
+         
+         <button mat-button *ngIf="this.modelQuestion.id" (click)="this.modelQuestion.id=0">new</button> 
 
+        <button mat-button 
+        *ngIf="this.modelQuestion.id" 
+        (click)="this.api.putQuestion(this.modelQuestion)">Edit</button>
+ 
+      </mat-card-actions>
+<app-questions></app-questions>
 </mat-card>

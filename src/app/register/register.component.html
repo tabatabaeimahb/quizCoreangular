@@ -1,0 +1,32 @@
+<mat-card>
+
+    <form  [formGroup]="this.form" (ngSubmit)="apiAuth.register(this.form.value)">
+   
+        <div class="example-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="pat@example.com" formControlName="email" required>
+              <mat-error *ngIf="f.email?.invalid">{{this.getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </div>
+        <br>
+
+        <div class="example-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Enter your password</mat-label>
+              <input matInput placeholder="password" formControlName="pass" required>
+              <mat-error *ngIf="f.pass?.invalid">{{this.getErrorMessage()}}</mat-error>
+             
+
+            </mat-form-field>
+          </div>
+  
+    <br>
+    
+     <button mat-raised-button color="primary" mat-button 
+       [disabled]="!this.form.valid"   >
+         Register</button>
+    </form>
+      
+
+</mat-card>

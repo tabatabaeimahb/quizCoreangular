@@ -1,0 +1,27 @@
+<mat-card   style="margin-top: 15px; margin-left:15px; margin-right: 15px;">
+  
+    <mat-card-title *ngIf="this.quiz.id">Edit Quiz</mat-card-title>
+
+    <mat-card-title *ngIf="!this.quiz.id">New Quiz</mat-card-title> 
+    <form  >
+        <mat-form-field >
+          <input matInput placeholder="Quiz" [(ngModel)]="this.quiz.title" name="Quiz">
+        </mat-form-field>
+           
+      </form>
+      <mat-card-actions>
+        <button mat-button   color="primary" *ngIf="!this.quiz.id" (click)="postquiz()" >Post</button>
+        
+        <button mat-button color="warn" *ngIf="this.quiz.id" (click)="this.quiz.id=0">new</button> 
+
+        <button mat-button 
+                            *ngIf="this.quiz.id" 
+                            >Edit</button>
+
+                            
+    <button color="accent"  *ngIf="this.quiz.id" [routerLink]="['/question',this.quiz.id]" mat-button>ٍِEdit Questions</button>
+ 
+      </mat-card-actions>
+
+<app-quizzes></app-quizzes>
+</mat-card>
